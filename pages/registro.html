@@ -28,13 +28,13 @@
       </article>
     </header>
     <section class="container mt-4">
-      <article>
-        <h2>Bienvenido a Bru Wallet. Es un placer tenerlo por aca!</h2>
-        <h4>registrate</h4>
+      <article class="row">
+        <h2 class="offset-md-4 col-md-5">Bienvenido a Bru Wallet!</h2>
+        <h4 class="offset-md-5 col-md-2">registrate</h4>
       </article>
-      <article>
+      <article class="row">
         <form id="FormRegister" action="/registrar" method="POST">
-          <div>
+          <div class="offset-md-4 col-md-4 mt-2">
             <label for="nombre">Nombre:</label>
             <input
               type="text"
@@ -45,8 +45,8 @@
             />
           </div>
 
-          <div>
-            <label for="email">Email:</label>
+          <div class="offset-md-4 col-md-4 mt-2">
+            <label for="email">Email :</label>
             <input
               type="email"
               id="email"
@@ -56,7 +56,7 @@
             />
           </div>
 
-          <div>
+          <div class="offset-md-4 col-md-4 mt-2">
             <label for="password">Contraseña:</label>
             <input
               type="password"
@@ -67,7 +67,7 @@
             />
           </div>
 
-          <button id="FormRegister" type="submit">Registrarse</button>
+          <button class="offset-md-5 col-md-2 mt-5" id="FormRegister" type="submit">Registrarse</button>
         </form>
       </article>
     </section>
