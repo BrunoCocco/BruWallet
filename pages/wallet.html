@@ -11,19 +11,24 @@
     <!-- js jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
         <!-- js -->
-        <script src="./main.js" defer></script>
+        <script src="/js/main.js" defer></script>
     <!-- <script src="./NEWjs.js" defer></script> -->
     <!-- stylos .css -->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>UALA || TRU</title>
 </head>
 <body>
-    <header class="container " id="header">
-        <div class="row mt-3">
+    <header class="container-fluid header-azul">
+        <article>
+            <p>header va aca</p>
+        </article>
+    </header>
+    <section class="container" id="header">
+        <article class="row mt-5">
             <h3 class="header__h3--bienvenidos col-9 pt-1">Bienvenidos a UalaTru</h3>
             <button class="btn btn-primary col-3" data-bs-toggle="modal"  data-bs-target="#ingreso">ingresar</button>
-        </div>
-    </header>
+        </article>
+    </section>
     <!-- saldo actual -->
     <main class="container">
         <div class="row mt-2">
@@ -103,6 +108,11 @@
             </div>
         </div>
     </div>
+    <footer class="container-fluid footer-negro">
+        <article>
+            aca va el footer
+        </article>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
