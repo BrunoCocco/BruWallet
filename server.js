@@ -1,31 +1,75 @@
-const sqlite3 = require('sqlite3').verbose();
+const express = require("express");
+const path = require("path");
+const db = require("./db/database");
 
-// Crear la base de datos (si no existe, la crea automáticamente)
-const db = new sqlite3.Database('./db/wallet.db', (err) => {
-  if (err) {
-    console.error('Error al abrir la base de datos:', err);
-  } else {
-    console.log('Conectado a la base de datos');
-  }
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+
+// 🟢 Servimos la raíz (index.html)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Crear la tabla de usuarios si no existe
-db.run(`
-  CREATE TABLE IF NOT EXISTS usuarios (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    usuario TEXT UNIQUE NOT NULL,
-    contraseña TEXT NOT NULL
-  );
-`);
+// 🟢 Servir los recursos estáticos (css, js, pages, etc.)
+app.use("/css", express.static(path.join(__dirname, "css")));
+app.use("/js", express.static(path.join(__dirname, "js")));
+app.use("/pages", express.static(path.join(__dirname, "pages")));
 
-// Crear la tabla de transacciones si no existe
-db.run(`
-  CREATE TABLE IF NOT EXISTS transacciones (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    usuario_id INTEGER,
-    tipo TEXT NOT NULL,  -- 'entrada' o 'salida'
-    monto REAL NOT NULL,
-    fecha TEXT NOT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
-  );
-`);
+// 🟢 Ruta para registrar usuario
+app.post("/registrar", (req, res) => {
+  const { nombre, email, password } = req.body;
+
+  if (!nombre || !email || !password) {
+    return res.status(400).send("❌ Faltan datos del formulario");
+  }
+
+  const query = `
+    INSERT INTO usuarios (usuario, contraseña)
+    VALUES (?, ?)
+  `;
+
+  // Usamos 'nombre' como usuario, y 'password' como contraseña
+  db.run(query, [nombre, password], function (err) {
+    if (err) {
+      console.error("❌ Error al registrar usuario:", err.message);
+      return res.status(400).send("❌ Error al registrar usuario (puede ya existir)");
+    }
+
+    console.log("✅ Nuevo usuario guardado con ID:", this.lastID);
+
+    // Guardar también email en tabla transacciones (opcional más adelante)
+    const ahora = new Date();
+    const fecha = ahora.toLocaleDateString("es-ES");
+    const hora = ahora.toLocaleTimeString("es-ES");
+
+    db.run(
+      `INSERT INTO transacciones (usuario_id, tipo, monto, fecha)
+       VALUES (?, ?, ?, ?)`,
+      [this.lastID, "registro", 0, `${fecha} ${hora}`],
+      (err2) => {
+        if (err2) console.error("Error en transacciones:", err2.message);
+      }
+    );
+
+    res.send(`✅ Usuario ${nombre} registrado con éxito (ID: ${this.lastID})`);
+  });
+});
+
+
+// 🟢 Ruta para ver los usuarios
+app.get("/usuarios", (req, res) => {
+  db.all(`SELECT * FROM usuarios`, [], (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      return res.status(500).send("Error al obtener usuarios");
+    }
+    res.json(rows);
+  });
+});
+
+// 🟢 Iniciar servidor
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+});

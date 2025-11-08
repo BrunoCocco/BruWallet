@@ -1,23 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("FormRegister");
+  const form = document.getElementById("FormLogin");
 
   form.addEventListener("submit", (event) => {
     event.preventDefault(); // Evita recargar la página
-
-    const nombre = document.getElementById("nombre").value;
+    //tomo nombre
     const email = document.getElementById("email").value;
+    // tomo password
     const password = document.getElementById("password").value;
+    // tomo horario
     const horaRegistro = new Date().toLocaleString();
-    const userId =
-      crypto.randomUUID().split("-")[0] +
-      "-" +
-      crypto.randomUUID().split("-")[1].slice(0, 4);
 
-    console.log("Formulario completo:");
-    console.log("Nombre:", nombre);
-    console.log("Email:", email);
+    console.log("Formulario log In completo:");
+    console.log("email:", email);
     console.log("Contraseña:", password);
     console.log("Hora de registro:", horaRegistro);
-    console.log("userId:", userId); // <-- ahora sí muestra el valor real
   });
 });

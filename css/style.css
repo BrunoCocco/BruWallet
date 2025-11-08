@@ -1,3 +1,14 @@
+/*HEADER*/
+
+.header-azul {
+  background-color: #007bff; /* azul tipo Bootstrap */
+  height: 2cm;
+  display: flex;
+  align-items: center; /* centra verticalmente el contenido */
+  color: white; /* texto blanco */
+  padding: 0 15px; /* espacio lateral */
+}
+
 .print--deposito{
     color:green;
     font-size: 16px;
@@ -16,4 +27,19 @@
 .spam__Dato{
     text-transform: uppercase;
     color: blue;
+}
+
+/*Footer*/
+
+.footer-negro {
+  background-color: #222; /* gris oscuro elegante */
+  color: #f1f1f1; /* texto claro */
+  height: 3cm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

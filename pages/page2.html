@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Script Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="../js/login.js"></script>
+    <title>Registro</title>
+  </head>
+  <body>
+    <header class="container-fluid header-azul">
+      <article>
+        <p>aqui va una barra de navegacion</p>
+      </article>
+    </header>
+    <section class="container mt-4">
+      <article class="row">
+        <h2 class="offset-md-3 col-md-5">Es un placer tenerlo por aca!</h2>
+        <h4 class="offset-md-5 col-md-4 mt-4">Log In! </h4>
+      </article>
+      <article class="row">
+        <form id="FormLogin" action="/registrar" method="POST">
+          <div class="offset-md-4 col-md-4 mt-4">
+            <label for="nombre">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Ingrese su email"
+              required
+            />
+          </div>
+          <div class="offset-md-4 col-md-4 mt-4">
+            <label for="password">Contraseña:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Ingrese su contraseña"
+              required
+            />
+          </div>
+
+          <button id="FormLogin" type="submit" class="offset-md-5 col-md-2 mt-5">Ingresar</button>
+        </form>
+      </article>
+    </section>
+    <footer class="mt-5 footer-negro">
+      <p>© 2024 BruWallet. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
