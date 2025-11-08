@@ -1,0 +1,14 @@
+# Ignorar node_modules (dependencias de npm)
+node_modules/
+
+# Ignorar archivos de configuración del entorno
+.env
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar la base de datos SQLite
+*.db
+
+# Ignorar el directorio de Visual Studio Code
+.vscode/

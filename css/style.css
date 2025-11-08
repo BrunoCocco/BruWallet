@@ -1,0 +1,19 @@
+.print--deposito{
+    color:green;
+    font-size: 16px;
+}
+.print--date{
+    color:lightblue;
+    font-size: 12px;
+}
+.print--retiro{
+    color:lightcoral;
+    font-size: 16px;
+}
+.header__h3--bienvenidos{
+    font-size: 20px;
+}
+.spam__Dato{
+    text-transform: uppercase;
+    color: blue;
+}
