@@ -17,7 +17,7 @@ const cerrarSesion = () =>{
     let usuario = document.getElementById("ingresar").value
     document.getElementById("header").innerHTML = `
     <div class="row mt-3">
-        <h3 class="header__h3--bienvenidos col-9 pt-1">Bienvenidos a UalaTru</h3>
+        <h3 class="header__h3--bienvenidos col-9 pt-1">Ingresa!</h3>
         <button class="btn btn-primary col-3" data-bs-toggle="modal"  data-bs-target="#ingreso">ingresar</button>
     </div>
     `
@@ -174,11 +174,13 @@ else{
 
 // borrar historial
 const historial = () =>{
+    $("#saldoActual").fadeOut()
     $("#print").fadeOut()
     console.log("oculto")
 }
 // mostrar historial
 const historialmuestra = () =>{
+    $("#saldoActual").fadeIn()
     $("#print").fadeIn()
     console.log("visible")
 }
